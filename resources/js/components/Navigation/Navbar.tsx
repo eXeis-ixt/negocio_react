@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from '@inertiajs/react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,25 +12,20 @@ const Navbar = () => {
           {/* Logo and Brand */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <span className="font-semibold text-xl text-gray-800">Brand</span>
+              <span className="font-semibold text-xl text-gray-800">Communic</span>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+              <Link prefetch href="/" className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">
                 Home
-              </a>
-              <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Products
-              </a>
-              <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                Services
-              </a>
-              <a href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+              </Link>
+
+              <Link href="#" className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium">
                 About
-              </a>
+              </Link>
             </div>
           </div>
 

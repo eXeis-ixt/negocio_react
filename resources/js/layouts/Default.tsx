@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 const Default = ({ children }: PropsWithChildren) => {
     return (
         <div className=' '>
-          <div>
+        <div>
             <Navbar />
           </div>
             <div className="">{children}</div>
