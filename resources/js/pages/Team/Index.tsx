@@ -73,7 +73,7 @@ const TeamRegister: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Default>
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mt-5 px-4 py-10">
           <div className="mx-auto max-w-2xl">
             <Card className="shadow-lg">
               <CardHeader className="space-y-1">
