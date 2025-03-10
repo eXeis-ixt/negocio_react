@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TeamNotification;
 
 class TeamController extends Controller
 {
@@ -12,7 +14,10 @@ class TeamController extends Controller
         return Inertia::render('Team/Index');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        // Validate the request...
+        $validated =
         $request->validate( [
             'team_name' => 'required|string|max:255|unique:teams,name',
             'manager_email' => 'required|email|max:255',
@@ -33,8 +38,22 @@ class TeamController extends Controller
             'memberfive_phone' => 'nullable|string|max:20',
         ]);
 
-        $team = Team::create($request->all());
+        try {
+            // Create the team
+            $team = Team::create($request->all());
 
+            // Send confirmation email to the team manager
+            Mail::to($team->manager_email)
+                ->send(new TeamNotification($team));
+
+            return redirect()->route('team.register')
+                ->with('success', 'Team registered successfully! A confirmation email has been sent to the team manager.');
+
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['error' => 'Failed to register team. ' . $e->getMessage()]);
+        }
     }
 
 }
