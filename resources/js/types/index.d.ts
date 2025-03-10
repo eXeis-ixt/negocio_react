@@ -40,3 +40,23 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface TeamProps{
+    team_name?:  string
+        manager_email?: string,
+        memberone_name?: string,
+        memberone_email?: string,
+        memberone_phone?: string,
+        membertwo_name:?  string
+        membertwo_email?: string,
+        membertwo_phone?: string,
+        memberthree_name?: string,
+        memberthree_email?: string,
+        memberthree_phone?: string,
+        memberfour_name?: string,
+        memberfour_email?: string,
+        memberfour_phone?: string,
+        memberfive_name:?  string
+        memberfive_email:?  string
+        memberfive_phone?: string,
+}
