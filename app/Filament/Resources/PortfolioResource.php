@@ -17,12 +17,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioResource extends Resource
 {
     protected static ?string $model = Portfolio::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
 
     public static function form(Form $form): Form
     {
@@ -47,6 +48,13 @@ class PortfolioResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()->after(function (Portfolio $record) {
+                    // delete single
+                    if ($record->image) {
+                       Storage::disk('public')->delete($record->image);
+                    }
+
+                 }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

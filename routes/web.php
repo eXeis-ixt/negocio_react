@@ -8,7 +8,7 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/team/register', [TeamController::class, 'index'])->name('team.register');
 Route::post('/team/register', [TeamController::class, 'store'])->name('team.store');
-Route::get('portfolio', [HomeController::class, 'portolio'])->name('portfolio');
+Route::get('Negocio', [HomeController::class, 'portolio'])->name('portfolio');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {

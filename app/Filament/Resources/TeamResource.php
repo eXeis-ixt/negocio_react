@@ -9,22 +9,55 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('team_name')
+                    ->required(),
+                Forms\Components\TextInput::make('manager_email')
+                    ->email()
+                    ->required(),
+                Forms\Components\TextInput::make('memberone_name')
+                    ->required(),
+                Forms\Components\TextInput::make('memberone_email')
+                    ->email()
+                    ->required(),
+                Forms\Components\TextInput::make('memberone_phone')
+                    ->tel(),
+                Forms\Components\TextInput::make('membertwo_name')
+                    ->required(),
+                Forms\Components\TextInput::make('membertwo_email')
+                    ->email()
+                    ->required(),
+                Forms\Components\TextInput::make('membertwo_phone')
+                    ->tel(),
+                Forms\Components\TextInput::make('memberthree_name'),
+                Forms\Components\TextInput::make('memberthree_email')
+                    ->email(),
+                Forms\Components\TextInput::make('memberthree_phone')
+                    ->tel(),
+                Forms\Components\TextInput::make('memberfour_name'),
+                Forms\Components\TextInput::make('memberfour_email')
+                    ->email(),
+                Forms\Components\TextInput::make('memberfour_phone')
+                    ->tel(),
+                Forms\Components\TextInput::make('memberfive_name'),
+                Forms\Components\TextInput::make('memberfive_email')
+                    ->email(),
+                Forms\Components\TextInput::make('memberfive_phone')
+                    ->tel(),
             ]);
     }
 
@@ -32,8 +65,48 @@ class TeamResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('team_name')->searchable(),
-                TextColumn::make('manager_email')->searchable(),
+                Tables\Columns\TextColumn::make('team_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('manager_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberone_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberone_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberone_phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('membertwo_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('membertwo_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('membertwo_phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberthree_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberthree_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberthree_phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberfour_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberfour_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberfour_phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberfive_name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberfive_email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('memberfive_phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
@@ -43,6 +116,7 @@ class TeamResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
+                ExportBulkAction::make(),
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),

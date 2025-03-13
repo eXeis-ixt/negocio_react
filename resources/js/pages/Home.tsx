@@ -1,7 +1,8 @@
 import AboutComponent from '@/components/AboutComponent'
-import { HeroSection } from '@/components/Hero'
+import { BentoGrid } from '@/components/BentoGrid'
+import Hero from '@/components/Hero'
+// import { HeroSection } from '@/components/Hero'
 import { CountdownTimer } from '@/components/Timer'
-import BentoGrid from '@/components/bento'
 import { Card } from '@/components/ui/card'
 import Default from '@/layouts/Default'
 import { Head } from '@inertiajs/react'
@@ -19,18 +20,9 @@ const Home = () => {
         <Default>
 
     <div>
-    <HeroSection
-      title="Welcome Communic"
-      subtitle={{
-        regular: "Transform your ideas into ",
-        gradient: "beautiful digital experiences",
-      }}
-      description="Transform your ideas into reality with our comprehensive suite of development tools and resources."
-      ctaText="Get Started"
-      ctaHref="/signup"
 
+    <Hero title='Negocio' desc='Negocio is the country’s first Inter-university Sales Strategy Competition. It is the flagship business competition of Communic, IBA-Jahangirnagar University. ' />
 
-    />
     </div>
 
     <div className=' flex items-center justify-center'>
@@ -39,6 +31,9 @@ const Home = () => {
 
     <div>
         <AboutComponent />
+    </div >
+    <div className=' container'>
+
     </div>
 
         </Default>

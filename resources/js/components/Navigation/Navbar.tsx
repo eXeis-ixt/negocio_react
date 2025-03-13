@@ -8,9 +8,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { Link } from "@inertiajs/react"
+import AppLogoIcon from "../app-logo-icon"
 
 const navigation = [
   { name: "Home", href: "/" },
+  { name: "Neogcio", href: route('portfolio') },
   { name: "Team Register", href: route('team.register') },
 
 ]
@@ -40,7 +42,7 @@ export function Navbar() {
         <div className="container flex h-14 items-center justify-between px-8">
           <div className="flex gap-6 md:gap-10">
             <Link prefetch className="flex items-center space-x-2" href={route('home')}>
-              <span className="inline-block font-bold">Communic</span>
+              <AppLogoIcon />
             </Link>
             <nav className="hidden gap-6 md:flex">
               {navigation.map((item) => (
@@ -55,14 +57,12 @@ export function Navbar() {
             </nav>
           </div>
           <div className="flex items-center gap-4">
-            <Link href={route('login')}>
-            <Button variant="ghost" className="hidden md:flex">
-              Sign In
+            <a href='https://www.facebook.com/communic.ibaju' target="_blank">
+            <Button  className="hidden md:flex">
+              Communic
             </Button>
-            </Link>
-            <Button className="hidden md:flex">
-              Get Started
-            </Button>
+            </a>
+
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" className="px-2 md:hidden" aria-label="Open Menu">

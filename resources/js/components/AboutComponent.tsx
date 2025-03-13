@@ -13,7 +13,7 @@ const AboutComponent = () => {
                             <h6 className="text-gray-400  dark:text-gray-50 font-normal leading-relaxed">About Communic</h6>
                             <div className="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
                                 <h2
-                                    className="text-indigo-700 dark:text-white text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
+                                    className="text-[#44af88] dark:text-white text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
                                     The Tale of Our Achievement Story</h2>
                                 <p
                                     className="text-gray-500 dark:text-gray-100 text-base font-normal leading-relaxed lg:text-start text-center">
